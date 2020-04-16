@@ -1,0 +1,105 @@
+.products-container {
+    width: 100%;
+    max-width: 960px;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.products-container h2 {
+    text-align: center;
+    margin: 0;
+    line-height: 48px;
+    font-weight: bold;
+    font-size: 48px;
+    margin-top: 30px;
+}
+
+.products-container .categoria {
+    font-style: italic ;
+    font-size: 12px;
+}
+
+.products-header input, .btAddProduct{
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    width: 280px;
+    margin: 0.5rem;
+}
+
+.products-header input {
+    padding-left: 8px;
+}
+
+.products-header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 960px;
+    margin: 2rem auto;
+}
+
+.products-content ul {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 10px;
+}
+
+.products-content li {
+    display: flex;
+    flex-direction: column;
+
+    justify-items: center;
+    align-content: space-around;
+
+    text-align: center;
+    background-color: rgb(157, 119, 168);
+    color: rgb(227, 220, 228);
+
+    padding:16px;    
+
+    position: relative;
+}
+
+.products-content li:hover {
+    background-color: rgb(88, 66, 94);
+    cursor: pointer;
+}
+
+.products-content li span {
+    margin-top: 8px;
+}
+
+.products-content li strong {
+    font-size: 24px;
+}
+
+li .actionItem {
+    position: absolute;
+    top: 24px;
+    right: 12px;
+    border: 0;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    height: auto;
+  }
+
+  .actionItem button {
+      height: 30px;
+      width: 30px;
+      background-color: rgb(157, 119, 168);
+      margin-bottom: 27px;
+      border: 1 solid lightgray;
+      color: lightgray;
+      font-size: 18px;
+      border-radius: 4px;
+  }
+
+  .actionItem button:hover{
+      background-color: rgb(149, 80, 168);
+  }
