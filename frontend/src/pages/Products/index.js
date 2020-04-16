@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 import './styles.css'
 
@@ -9,7 +10,7 @@ export default function Products() {
 
             <div className="products-header">
                 <input type="text" className="buscaProduct" placeholder='Search for a product' />
-                <button className="btAddProduct">Add Product</button>
+                <Link to='newProduct' className='button' >Add Product</Link>
             </div>
             <div className="products-content">
                 <ul>
