@@ -1,9 +1,46 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 import './styles.css'
+import api from '../../services/api'
 
 export default function NewProduct() {
+    const history = useHistory()
+
+    const [name, setName] = useState()
+    const [category, setCategory] = useState()
+    const [quantity, setQuantity] = useState()
+    const [expirationDate, setExpirationDate] = useState()
+
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+        api.get('categories').then(response => {
+            setCategories(response.data)
+        })
+    }, [])
+
+    async function handleAddProduct (e){
+        e.preventDefault()
+
+        const product = {
+            name,
+            quantity,
+            category,
+            expirationDate
+        }
+
+        console.log({product})
+
+        try {
+            await api.post('products', product)
+
+            history.push('/')   
+        } catch(err) {
+            alert('Error on add product, try again')
+        }
+    }
+
     return (
         <div className='containerNewProduct'>
             <div className="headerNewProduct">
@@ -11,31 +48,42 @@ export default function NewProduct() {
                 <Link to='/'>voltar</Link>
             </div>
 
-            <form action="" className="addProduct">
+            <form onSubmit={handleAddProduct} className="addProduct">
                 <input 
                     type="text" 
                     className="productProp"
                     placeholder='Product Name'
-                    value=""
+                    value={name}
+                    onChange={e => setName(e.target.value)}
                 />
                 <input 
                     type="text" 
                     className="productProp"
                     placeholder='Quantity'
-                    value=""
+                    value={quantity}
+                    onChange={e => setQuantity(e.target.value)}
                 />
                 <input 
                     type="date" 
                     className="productProp"
                     placeholder='Expiration Date'
-                    // value=""
+                    value={expirationDate}
+                    onChange={e => setExpirationDate(e.target.value)}
                 />
-                <input 
-                    type="text" 
+                <select 
+                    name="categories" 
                     className="productProp"
-                    placeholder='Category'
-                    value=""
-                />
+                    onChange={e => setCategory(e.target.value)}
+                >
+                    <option value="0" selected disabled hidden>Choose Category</option>
+
+                    {categories
+                        .map(category => (
+                            <option key={category.id} value={category.id}>
+                                {category.name}
+                            </option>                        ))
+                    }
+                </select>
                 <button className='button'>Add Product</button>
             </form>
         </div>

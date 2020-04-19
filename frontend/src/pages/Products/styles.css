@@ -94,3 +94,8 @@ li .actionItem {
   .actionItem button:hover{
       background-color: rgb(149, 80, 168);
   }
+
+  .productAction {
+      height: 30px;
+      padding-top: 4px;
+  }

@@ -10,7 +10,9 @@ module.exports = {
     },
 
     async create(request, response){
-        const {name, quantity, expirationDate, category_id} = request.body
+        const {name, quantity, expirationDate, category} = request.body
+
+        const category_id = category
 
         const [id] = await connection('products').insert({
             name,
