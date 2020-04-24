@@ -3,7 +3,8 @@ const connection = require('../database/connection')
 module.exports = {
 
     async index(request, response){
-        const products = await connection('products').select('*')
+        const products = await connection('products')
+            .select('*')
 
         return response.json(products)
 
@@ -22,5 +23,35 @@ module.exports = {
         })
 
         return response.json({id})
+    },
+
+    async update(request,response){
+        const { id, name, quantity, expirationDate, categoryId } = request.body
+
+        await connection('products')
+            .where('id',id)
+            .update({
+                name : name, 
+                quantity: quantity, 
+                expirationDate: expirationDate, 
+                category_id: categoryId
+            })
+            
+
+        return response.status(204).send()
+    },
+
+    async select(request, response){
+        const { id } = request.params
+        const product = await connection('products').select('*').where('id', id).first()
+
+        return response.json(product)
+    },
+
+    async delete(request, response){
+        const { id } = request.params
+        await connection('products').where('id', id).delete()
+
+        return response.status(204).send()
     }
 }

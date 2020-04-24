@@ -14,5 +14,9 @@ routes.get('/categories', CategoryController.index)
 
 routes.post('/products', ProductController.create)
 routes.get('/products', ProductController.index)
+routes.put('/products', ProductController.update)
+routes.delete('/products/:id', ProductController.delete)
+
+routes.get('/productDetail/:id', ProductController.select)
 
 module.exports = routes

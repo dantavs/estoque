@@ -10,8 +10,8 @@ export default function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route path='/' exact component={Products} />
-                <NewProduct path='/newProduct' component={NewProduct} />
-                <ProductDetail path='/productDetail/:id' component={ProductDetail} />
+                <Route path='/newProduct' component={NewProduct} />
+                <Route path='/productDetail/:productId' component={ProductDetail} />
             </Switch>
         </BrowserRouter>
 

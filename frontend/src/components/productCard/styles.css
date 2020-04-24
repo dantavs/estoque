@@ -1,0 +1,29 @@
+.productCard {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+    color: rgb(227, 220, 228);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.productCard strong {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding: 0 40px;
+}
+
+
+.productDelete {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    background-color: black;
+    height: 30px;
+    width: 30px;
+    display: initial;
+}
+
+.container {
+    position: relative;
+}
