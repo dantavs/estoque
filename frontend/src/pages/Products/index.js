@@ -21,29 +21,14 @@ export default function Products() {
         })
     }, [])
 
-    function handleProductDetail(productId){
-        history.push(`productDetail/${productId}`)
-    }
-
     function handleInput(e) {
         e.preventDefault()
         setSearch(e.target.value.toLowerCase())
     }
 
-    async function handleDelete(id) {
-        try {
-            await api.delete(`products/${id}`)
-
-            setProducts(products.filter(product => product.id != id))
-        } catch(err){
-            alert('Delete failed. Please, try again.')
-        }
-
-    }
-
     return (
         <div className='products-container'>
-            <h2> Lista de Produtos </h2>
+            <h2>Products List</h2>
 
             <div className="products-header">
                 <input 
@@ -54,39 +39,11 @@ export default function Products() {
                 />
                 <Link to='newProduct' className='button' >Add Product</Link>
             </div>
-            <div className="products-content">
-                <ul>
-                    {products
-                        .filter((product) => {
-                            return product.name.toLowerCase().includes(search)
-                        })
-                        .map(product =>(
-                            <li  key={product.id}>
-                                <div onClick={() => handleProductDetail(product.id)} className="productData">
-                                    <strong>{product.name}</strong>
-                                    <span className="categoria">{product.category}</span>
-                                    <span>Qty: {product.quantity}</span>
-                                    <span>Expiration date: {product.expirationDate}</span>
-                                </div>
-                                <div className="actionItem">
-                                    <button 
-                                        className="productAction"
-                                        onClick={() => handleDelete(product.id)}
-                                    >
-                                        <FiTrash2 />
-                                    </button>
-                                    <button className="productAction"><FiDollarSign /></button>
-                                </div>
-                            </li>
-                        ))
-
-                    }
-      
-                </ul>
+           
 
                 <ProductList products={products} search={search} />
 
-            </div>
+            
         </div>
     )
 }

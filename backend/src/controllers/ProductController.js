@@ -4,7 +4,11 @@ module.exports = {
 
     async index(request, response){
         const products = await connection('products')
-            .select('*')
+            .join('categories', 'categories.id', '=', 'products.category_id')
+            .select([
+                'products.*',
+                'categories.name as category'
+            ])
 
         return response.json(products)
 
