@@ -9,16 +9,15 @@
     height: 50px;
     border-radius: 8px;
     border: 1px solid gray;
-    width: 280px;
-    margin: 0.5rem;
-}
-
-.products-container .btAddProduct{
-    
+    margin-bottom: 1rem;
 }
 
 .products-header input {
     padding-left: 8px;
+}
+
+.products-header .button, input{
+    width: 300px;
 }
 
 .products-header {
